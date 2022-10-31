@@ -1,22 +1,24 @@
 import reactLogo from "./assets/react.svg";
 
-const Header = () => {
+const Header = (prosp) => {
   return (
     <header className="px-7 py-8 bg-[#8063FA] rounded-t-md flex items-center border-solid border-b-1 border-[#D4CAFF] text-white gap-5">
       <h1 className="grow font-normal text-2xl text-right tracking-wider">
-        Scoreboard
+        {prosp.title}
       </h1>
-      <span className="text-sm font-semibold">Players: 1</span>
+      <span className="text-sm font-semibold">
+        Players: {prosp.totalPlayers}
+      </span>
     </header>
   );
 };
 
-const Player = () => {
+const Player = (props) => {
   return (
     <div>
-      <Header />
+      <Header title="scoreboard" totalPlayers={2} />
       <div className="flex justify-between items-center bg-white rounded-b-md border-solid border-b-4 border-[#D4CAFF]">
-        <span className="text-2xl font-bold pl-7">Alex</span>
+        <span className="text-2xl font-bold pl-7">{props.name}</span>
         <Counter />
       </div>
     </div>
@@ -40,7 +42,7 @@ const Counter = () => {
 function App() {
   return (
     <div className="container mx-auto">
-      <Player />
+      <Player name="Alex" score={40} />
     </div>
   );
 }
