@@ -35,10 +35,12 @@ const Header = (prosp) => {
 const Player = (props) => {
   return (
     <div>
-      <div className="flex justify-between items-center bg-white">
-        <span className="text-2xl font-bold pl-7">{props.name}</span>
-        <Counter {...props} />
-      </div>
+      {props.initialPlayers.map((player) => (
+        <div className="flex justify-between items-center bg-white">
+          <span className="text-2xl font-bold pl-7">{player.name}</span>
+          <Counter score={player.score} />
+        </div>
+      ))}
     </div>
   );
 };
@@ -73,9 +75,7 @@ function App() {
     <div className="container mx-auto rounded-b-md border-solid border-b-4 border-[#D4CAFF]">
       <Header title="scoreboard" totalPlayers={2} />
       <main className="divide-y divide-slate-200">
-        <Player name="Alex" score={40} />
-        <Player name="asd" score={40} />
-        <Player name="Alex" score={40} />
+        <Player initialPlayers={players} />
       </main>
     </div>
   );
