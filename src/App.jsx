@@ -1,5 +1,24 @@
 import reactLogo from "./assets/react.svg";
 
+const players = [
+  {
+    name: "Guil",
+    score: 50,
+  },
+  {
+    name: "Treasure",
+    score: 85,
+  },
+  {
+    name: "Ashley",
+    score: 95,
+  },
+  {
+    name: "James",
+    score: 80,
+  },
+];
+
 const Header = (prosp) => {
   return (
     <header className="px-7 py-8 bg-[#8063FA] rounded-t-md flex items-center border-solid border-b-1 border-[#D4CAFF] text-white gap-5">
@@ -24,9 +43,16 @@ const Player = (props) => {
   );
 };
 
+function handleClick(message) {
+  alert(message);
+}
+
 const Button = (props) => {
   return (
-    <button className="text-slate-900 text-3xl p-5 bg-zinc-300 hover:bg-slate-300">
+    <button
+      onClick={() => handleClick(props.message)}
+      className="text-slate-900 text-3xl p-5 bg-zinc-300 hover:bg-slate-300"
+    >
       {props.symbol}
     </button>
   );
@@ -35,9 +61,9 @@ const Button = (props) => {
 const Counter = (props) => {
   return (
     <div className="flex gap-3 items-center">
-      <Button symbol="-" />
+      <Button symbol="-" message="Minus!!!" />
       <span className="font-bold text-xl">{props.score}</span>
-      <Button symbol="+" />
+      <Button symbol="+" message="Plus!!!" />
     </div>
   );
 };
@@ -48,7 +74,7 @@ function App() {
       <Header title="scoreboard" totalPlayers={2} />
       <main className="divide-y divide-slate-200">
         <Player name="Alex" score={40} />
-        <Player name="Alex" score={40} />
+        <Player name="asd" score={40} />
         <Player name="Alex" score={40} />
       </main>
     </div>
