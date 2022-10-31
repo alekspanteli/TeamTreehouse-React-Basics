@@ -16,33 +16,41 @@ const Header = (prosp) => {
 const Player = (props) => {
   return (
     <div>
-      <Header title="scoreboard" totalPlayers={2} />
-      <div className="flex justify-between items-center bg-white rounded-b-md border-solid border-b-4 border-[#D4CAFF]">
+      <div className="flex justify-between items-center bg-white">
         <span className="text-2xl font-bold pl-7">{props.name}</span>
-        <Counter />
+        <Counter {...props} />
       </div>
     </div>
   );
 };
 
-const Counter = () => {
+const Button = (props) => {
+  return (
+    <button className="text-slate-900 text-3xl p-5 bg-zinc-300 hover:bg-slate-300">
+      {props.symbol}
+    </button>
+  );
+};
+
+const Counter = (props) => {
   return (
     <div className="flex gap-3 items-center">
-      <button className="text-slate-900 text-3xl p-5 bg-slate-200 hover:bg-slate-300">
-        -
-      </button>
-      <span className="font-bold text-xl">35</span>
-      <button className="text-slate-900 text-3xl p-5 bg-slate-200 hover:bg-slate-300">
-        +
-      </button>
+      <Button symbol="-" />
+      <span className="font-bold text-xl">{props.score}</span>
+      <Button symbol="+" />
     </div>
   );
 };
 
 function App() {
   return (
-    <div className="container mx-auto">
-      <Player name="Alex" score={40} />
+    <div className="container mx-auto rounded-b-md border-solid border-b-4 border-[#D4CAFF]">
+      <Header title="scoreboard" totalPlayers={2} />
+      <main className="divide-y divide-slate-200">
+        <Player name="Alex" score={40} />
+        <Player name="Alex" score={40} />
+        <Player name="Alex" score={40} />
+      </main>
     </div>
   );
 }
