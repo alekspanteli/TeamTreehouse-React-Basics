@@ -1,13 +1,15 @@
 import reactLogo from "./assets/react.svg";
 
-function Header() {
+const Header = () => {
   return (
-    <header>
-      <h1>Scoreboard</h1>
-      <span>Players</span>
+    <header className="px-7 py-8 bg-[#8063FA] rounded-t-md flex items-center border-solid border-b-1 border-[#D4CAFF] text-white gap-5">
+      <h1 className="grow font-normal text-2xl text-right tracking-wider">
+        Scoreboard
+      </h1>
+      <span className="text-sm">Players: 1</span>
     </header>
   );
-}
+};
 
 function App() {
   return (
