@@ -1,5 +1,8 @@
 import reactLogo from "./assets/react.svg";
 
+import React from "react";
+import { useState } from "react";
+
 import players from "./data/data";
 
 const Header = (props) => {
@@ -23,21 +26,18 @@ const Player = (props) => {
             className="flex justify-between items-center bg-white"
           >
             <span className="text-2xl font-bold pl-7">{player.name}</span>
-            <Counter score={player.score} />
+            {/* <Counter score={player.score} /> */}
+            <Counter />
           </div>
         ))}
     </>
   );
 };
 
-function handleClick(message) {
-  alert(message);
-}
-
 const Button = (props) => {
   return (
     <button
-      onClick={() => handleClick(props.message)}
+      // onClick={() => handleClick(props.message)}
       className="text-slate-900 text-3xl p-5 bg-zinc-300 hover:bg-slate-300"
     >
       {props.symbol}
@@ -45,11 +45,20 @@ const Button = (props) => {
   );
 };
 
-const Counter = (props) => {
+const Counter = () => {
+  const [score, setScore] = React.useState(0);
+
+  const incrementScore = () => {
+    setScore((prevScore) => prevScore + 1);
+  };
+
+  const decrementScore = () => {
+    setScore((prevScore) => prevScore - 1);
+  };
   return (
     <div className="flex gap-3 items-center">
       <Button symbol="-" message="Minus!!!" />
-      <span className="font-bold text-xl">{props.score}</span>
+      <span className="font-bold text-xl">{score}</span>
       <Button symbol="+" message="Plus!!!" />
     </div>
   );
